@@ -43,9 +43,9 @@ public class UsuarioServlet extends HttpServlet {
             Usuario user = usuDao.listarUsername(username);
             System.out.println("llego al dao"+user.getContrasenia()+user.getUsername()+user.getId());
             if (user != null && user.isPasswordCorrect(contrasenia)) {
-            // Credenciales válidas, crea una sesión
             
-            RequestDispatcher vista = request.getRequestDispatcher("ComprarTarjeta.html");
+            
+            RequestDispatcher vista = request.getRequestDispatcher("./assets/vistas/ComprarTarjeta.jsp");
             vista.forward(request, response);
             
         } else {
