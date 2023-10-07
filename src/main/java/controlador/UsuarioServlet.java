@@ -31,12 +31,29 @@ public class UsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String acceso = "";
+        
         String accion = request.getParameter("accion");
         
         if(accion.equalsIgnoreCase("Login")){
+            System.out.println("LLEGASTE A LOGIN");
+            
             String username = request.getParameter("username");
-            String contrasenia = request.getParameter("cantrasenia");
+            String contrasenia = request.getParameter("contrasenia");
+            
+            Usuario user = usuDao.listarUsername(username);
+            System.out.println("llego al dao"+user.getContrasenia()+user.getUsername()+user.getId());
+            if (user != null && user.isPasswordCorrect(contrasenia)) {
+            // Credenciales válidas, crea una sesión
+            
+            RequestDispatcher vista = request.getRequestDispatcher("ComprarTarjeta.html");
+            vista.forward(request, response);
+            
+        } else {
+            // Credenciales incorrectas, muestra un mensaje de error
+            request.setAttribute("error", "Credenciales incorrectas");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+            
         }
         
         /*

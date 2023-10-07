@@ -5,18 +5,27 @@ package modelo;
 public class Usuario {
 //atributos de usuario
   private int id;
-  private String nombre;
-  private String apellido_paterno;
-  private String apellido_materno;
-  private String correo;
-  private String contrasena;
+  private String username;
+  private String contrasenia;
+  private int id_persona;
+  private int id_rol;
+
 
   //constructor
   public Usuario() {
 
   }
-  //getter y setter
+  //METODOS
+  public boolean isPasswordCorrect(String inputPassword) {
+      
+      if(this.contrasenia.equalsIgnoreCase(inputPassword)){
+          return true;
+      }
+      
+      return false;
+}
 
+  //getter y setter
 
     public int getId() {
         return id;
@@ -26,43 +35,36 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getApellido_paterno() {
-        return apellido_paterno;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setApellido_paterno(String apellido_paterno) {
-        this.apellido_paterno = apellido_paterno;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
-    public String getApellido_materno() {
-        return apellido_materno;
+    public int getId_persona() {
+        return id_persona;
     }
 
-    public void setApellido_materno(String apellido_materno) {
-        this.apellido_materno = apellido_materno;
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getId_rol() {
+        return id_rol;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setId_rol(int id_rol) {
+        this.id_rol = id_rol;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
 }

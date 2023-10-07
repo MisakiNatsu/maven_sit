@@ -18,9 +18,9 @@ public class UsuarioDAO {
     ResultSet rs;
     Usuario usu=new Usuario();
     
-    public Usuario listarId(String username){
+    public Usuario listarUsername(String username){
         
-        String sql="SELECT * FROM `usuario` where username ="+username;
+        String sql="SELECT * FROM `usuario` where nombreUsuario = '"+ username + "'";
         try{
             conn=conexion.getConexion();
             ps=conn.prepareStatement(sql);
@@ -28,9 +28,14 @@ public class UsuarioDAO {
             while(rs.next()){
                 
                 usu.setId(rs.getInt("id"));
+                usu.setUsername(rs.getString("nombreUsuario"));
+                usu.setContrasenia(rs.getString("contrasenia"));
+                usu.setId_persona(rs.getInt("idPersona"));
+                usu.setId_rol(rs.getInt("id_rol"));
                 
                 
             }
+            System.out.println("nombre"+usu.getUsername());
         }catch(Exception e){
             System.err.println(e.getMessage());
         }
