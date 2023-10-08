@@ -131,17 +131,7 @@
                   </div>
                 </a>
               </div>
-                <form action="UsuarioServlet">
-        <!-- USERNAME INPUT -->
-        <label for="username">Usuario</label>
-        <input type="text" name="username" placeholder="Enter Username">
-        <!-- PASSWORD INPUT -->
-        <label for="password">ContraseÃ±a</label>
-        <input type="password" name="contrasenia" placeholder="Enter Password">
-        <input type="submit" name="accion" value="Login">
-        <a href="#">Â¿Olvidaste tu contraseÃ±a?</a><br>
-        <a href="#">Â¿No tienes una cuenta? Registrate</a>
-      </form>
+               
             </div>
           </div>
         </main>

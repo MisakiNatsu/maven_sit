@@ -1,3 +1,4 @@
+<%@page import="java.util.Random"%>
 <%@page import="modelo.Usuario" %>
   <!DOCTYPE html>
   <html lang="en" data-bs-theme="dark">
@@ -9,7 +10,7 @@
     <title>SIT</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/hola.css" />
+    <link rel="stylesheet" href="../css/hola.css" />
   </head>
 
   <body>
@@ -60,7 +61,7 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                  <img src="image/icono.png" class="avatar img-fluid rounded" alt="" />
+                  <img src="../image/icono.png" class="avatar img-fluid rounded" alt="" />
                 </a>
               </li>
             </ul>
@@ -75,7 +76,8 @@
               <h3>COMPRAR TARJETA</h3>
             </div>
             <!--tarjeta de sit-->
-            <% Usuario user=(Usuario) session.getAttribute("user"); if (user !=null) { %>
+            <% 
+            Usuario user=(Usuario) session.getAttribute("user"); if (user !=null) { %>
               <div class="d-flex justify-content-center">
                 <div class="tarjeta-compra px-4 py-3 my-3 bg-white rounded border border-success border-4"
                   style="width: 500px;height: 250px;">
@@ -96,9 +98,18 @@
                 </div>
                 <form action="../../TarjetaServlet">
                   <div class="input-group mb-3">
+                    <%
+                      Random random = new Random();
+                      StringBuilder numeroAleatorio = new StringBuilder(16);
+                        for (int i = 0; i < 16; i++) {
+                            int digito = random.nextInt(10); // Generar un d�gito aleatorio del 0 al 9
+                            numeroAleatorio.append(digito);
+                        }
+                      if(numeroAleatorio != null){
+                    %>
                     <span class="input-group-text">Numero de tarjeta</span>
-                    <input type="text" aria-label="First name" name="numero_tarjeta" class="form-control" />
-
+                    <input type="text" aria-label="First name" name="numero_tarjeta" class="form-control" value="" placeholder="<%= numeroAleatorio%>" />
+                       <%}%>
                   </div>
 
                   <div class="input-group mb-3">
@@ -133,7 +144,7 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
   </body>
 
   </html>

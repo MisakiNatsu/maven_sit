@@ -23,9 +23,6 @@ public class UsuarioServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
     }
     
-    String listar = "./assets/vistas/listar.jsp";
-    String add = "./assets/vistas/add.jsp";
-    String edit = "./assets/vistas/edit.jsp";
     Usuario usuario = new Usuario();
     UsuarioDAO usuDao = new UsuarioDAO();
     
@@ -33,30 +30,30 @@ public class UsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //se recibe la ACCION a realizar
         String accion = request.getParameter("accion");
         
+        //comparamos las acciones recibidas por las vistas
         if(accion.equalsIgnoreCase("Login")){
-            System.out.println("LLEGASTE A LOGIN");
             
-            String username = request.getParameter("username");
-            String contrasenia = request.getParameter("contrasenia");
             
-            Usuario user = usuDao.listarUsername(username);
-            System.out.println("llego al dao"+user.getContrasenia()+user.getUsername()+user.getId());
-            if (user != null && user.isPasswordCorrect(contrasenia)) {
+            String username = request.getParameter("username");         //recibimos el username de la vista
+            String contrasenia = request.getParameter("contrasenia");   //recibimos la contraseña de la vista
             
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+            Usuario user = usuDao.listarUsername(username);            //buscamos el usuario en la base de datos
+
+            if (user != null && user.isPasswordCorrect(contrasenia)) {  //si el usuario existe y la contraseña es correcta
             
-            response.sendRedirect("./assets/vistas/ComprarTarjeta.jsp");
-            /*
-            RequestDispatcher vista = request.getRequestDispatcher("./assets/vistas/ComprarTarjeta.jsp");
-            vista.forward(request, response);*/
+            HttpSession session = request.getSession();               //creamos una sesion
+            session.setAttribute("user", user);                      //guardamos el usuario en la sesion
+            
+            response.sendRedirect("./assets/vistas/ComprarTarjeta.jsp");    //redireccionamos a la vista de compra de tarjeta
+            
             
         } else {
             // Credenciales incorrectas, muestra un mensaje de error
             request.setAttribute("error", "Credenciales incorrectas");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);   //redireccionamos a la vista de login
         }
             
         }
