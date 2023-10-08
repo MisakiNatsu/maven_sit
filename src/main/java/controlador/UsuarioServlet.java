@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Usuario;
 import modeloDAO.UsuarioDAO;
 
@@ -44,9 +45,13 @@ public class UsuarioServlet extends HttpServlet {
             System.out.println("llego al dao"+user.getContrasenia()+user.getUsername()+user.getId());
             if (user != null && user.isPasswordCorrect(contrasenia)) {
             
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             
+            response.sendRedirect("./assets/vistas/ComprarTarjeta.jsp");
+            /*
             RequestDispatcher vista = request.getRequestDispatcher("./assets/vistas/ComprarTarjeta.jsp");
-            vista.forward(request, response);
+            vista.forward(request, response);*/
             
         } else {
             // Credenciales incorrectas, muestra un mensaje de error

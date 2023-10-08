@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<%@page import="modelo.Usuario" %>
+  <!DOCTYPE html>
+  <html lang="en" data-bs-theme="dark">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SIT</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/ae360af17e.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/hola.css" />
   </head>
 
@@ -27,11 +23,7 @@
         <div class="h-100">
           <div class="sidebar-logo">
             <a href="#">
-              <img
-                class="imagen"
-                src="image/interfaz-de-usuario-de-administrador.png"
-                alt=""
-              />
+              <img class="imagen" src="image/interfaz-de-usuario-de-administrador.png" alt="" />
             </a>
           </div>
           <ul class="sidebar-nav">
@@ -68,11 +60,7 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                  <img
-                    src="image/icono.png"
-                    class="avatar img-fluid rounded"
-                    alt=""
-                  />
+                  <img src="image/icono.png" class="avatar img-fluid rounded" alt="" />
                 </a>
               </li>
             </ul>
@@ -86,37 +74,50 @@
             <div class="mb-3">
               <h3>COMPRAR TARJETA</h3>
             </div>
-            <!--tarjeta de miduconft-->
-            <div class="d-flex justify-content-center">
-                <div class="tarjeta-compra px-4 py-3 my-3 bg-white rounded border border-success border-4" style="width: 500px;height: 250px;">
-                    <p class="text-dark"># <span>5423</span></p>
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        <h1 class="text-dark ">Tarjeta SIT</h1>
-                        <p class="text-dark ">Alex Cordova</p>
-                    </div>
-                    
+            <!--tarjeta de sit-->
+            <% Usuario user=(Usuario) session.getAttribute("user"); if (user !=null) { %>
+              <div class="d-flex justify-content-center">
+                <div class="tarjeta-compra px-4 py-3 my-3 bg-white rounded border border-success border-4"
+                  style="width: 500px;height: 250px;">
+                  <p class="text-dark"># <span>5423</span></p>
+                  <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h1 class="text-dark ">Tarjeta SIT</h1>
+                    <!<!-- obtenemos el nombre de usuario del modelo Usuario -->
+                      <p class="text-dark ">
+                        <%= user.getUsername()%>
+                      </p>
+                  </div>
+
                 </div>
-            </div>
+              </div>
+              <%}%>
+                <div class="mb-3">
+                  <h3>DATOS DE TARJETA</h3>
+                </div>
+                <form action="../../TarjetaServlet">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Numero de tarjeta</span>
+                    <input type="text" aria-label="First name" name="numero_tarjeta" class="form-control" />
 
-            <div class="mb-3">
-              <h3>DATOS DE TARJETA</h3>
-            </div>
-            <div class="input-group mb-5">
-              <span class="input-group-text">Numero de tarjeta</span>
-              <input type="text" aria-label="First name" class="form-control" />
-              
-            </div>
+                  </div>
 
-            <div class="input-group mb-5">
-              <span class="input-group-text">Fecha Vencimiento</span>
-              <input type="text" aria-label="First name" class="form-control" />
-              <span class="input-group-text">CVV</span>
-              <input type="text" aria-label="Last name" class="form-control" />
-            </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Fecha Vencimiento</span>
+                    <input type="text" aria-label="First name" name="fecha_activacion" class="form-control"
+                      placeholder="2023-10-08" />
+                    <span class="input-group-text">CVV</span>
+                    <input type="text" aria-label="Last name" class="form-control" />
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Codigo</span>
+                    <input type="text" aria-label="First name" name="codigo_tarjeta" class="form-control" />
+                  </div>
           </div>
           <div class="centrar">
-            <button type="button" class="btn btn-primary">COMPRAR</button>
+            <input type="submit" class="btn btn-primary" name="accion" value="Comprar">
           </div>
+          </form>
+
         </main>
 
         <!-- ========= light and dark mode toggle button ======= -->
@@ -134,4 +135,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
   </body>
-</html>
+
+  </html>

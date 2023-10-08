@@ -10,7 +10,6 @@ public class Usuario {
   private int id_persona;
   private int id_rol;
 
-
   //constructor
   public Usuario() {
 
@@ -66,5 +65,7 @@ public class Usuario {
     public void setId_rol(int id_rol) {
         this.id_rol = id_rol;
     }
+
+    
 
 }

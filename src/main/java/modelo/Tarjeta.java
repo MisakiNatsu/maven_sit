@@ -10,6 +10,7 @@ public class Tarjeta {
     private String codigo_tarjeta;
     private String numero_tarjeta;
     private Date fecha_activacion;
+    private Date fecha_vencimiento;    
     private Boolean estado;
     private double saldo;
     private int idUsuario;
@@ -71,6 +72,14 @@ public class Tarjeta {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public Date getFecha_vencimiento() {
+        return fecha_vencimiento;
+    }
+
+    public void setFecha_vencimiento(Date fecha_vencimiento) {
+        this.fecha_vencimiento = fecha_vencimiento;
     }
     
     
