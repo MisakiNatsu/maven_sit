@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import modelo.*;
+import modeloDTO.ViajeDTO;
 
 public class TarjetaDAO {
     
@@ -56,6 +57,8 @@ public class TarjetaDAO {
         return false;
     }
     
+    
+    
     public Tarjeta listarId(int id){
         
         String sql="SELECT * FROM `tarjeta` where id ="+id;
@@ -67,6 +70,8 @@ public class TarjetaDAO {
                 
                 tar.setId(rs.getInt("id"));
                 tar.setSaldo(rs.getDouble("saldo"));
+                tar.setNumero_tarjeta("numero_tarjeta");
+                tar.setFecha_activacion("fecha_activacion");
                 
                 
             }
@@ -76,4 +81,42 @@ public class TarjetaDAO {
         return tar;
     }
     
+    //--AGREGAR Transaccion
+    public boolean registroViaje(ViajeDTO viaje){
+  
+        String sql = "INSERT INTO `viaje_usuario`( `id_usuario`, `id_viaje`, `fecha_registro`, `hora_registro`, `monto_cobrado`, `numero_tarjeta`) VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')";
+        
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareCall(sql);
+            ps.executeUpdate();
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        return false;
+    }
+    //--Realizar Transaccion
+    public boolean descuentoTarjeta(ViajeUsuario viaje){
+        
+        String sql = "UPDATE `tarjeta` SET `saldo`= saldo - "+ viaje.getMonto_cobrado()+" WHERE `numero_tarjeta`='"+viaje.getTarjeta()+"'";
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    public boolean recargarNumeroTarjeta(double monto, String numero){
+        String sql = "UPDATE `tarjeta` SET `saldo`= saldo + "+monto+"  WHERE `numero_tarjeta`= '"+numero+"'";
+        System.out.println("LLEGAMOS  A RECARGA"+monto+numero);
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            System.out.println("SE RECARGO: "+ monto + numero);
+        }catch(Exception e){
+            e.printStackTrace();}
+        return false;
+    }
 }
