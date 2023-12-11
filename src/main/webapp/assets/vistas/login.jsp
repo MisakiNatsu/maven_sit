@@ -18,7 +18,7 @@
         <img src="../image/logo.png" class="avatar" alt="Avatar Image">
         <h1>Iniciar Sesion</h1>
 
-        <form action="../../UsuarioPasajeroServlet">
+        <form action="../../UsuarioServlet">
           <!-- USERNAME INPUT -->
           <label for="username">Usuario</label>
           <input type="text" name="username" placeholder="Enter Username">

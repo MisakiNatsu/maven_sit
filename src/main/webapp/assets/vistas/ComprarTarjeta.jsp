@@ -1,4 +1,3 @@
-<%@page import="modeloDTO.UsuarioDTO"%>
 <%@page import="java.util.Random"%>
 <%@page import="modelo.Usuario" %>
   <!DOCTYPE html>
@@ -11,7 +10,7 @@
     <title>SIT</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/hola.css" />
+    <link rel="stylesheet" href="../css/hola.css" />
   </head>
 
   <body>
@@ -25,7 +24,7 @@
         <div class="h-100">
           <div class="sidebar-logo">
             <a href="#">
-              <img class="imagen" src="${pageContext.request.contextPath}/assets/img/interfaz-de-usuario-de-administrador.png" alt="" />
+              <img class="imagen" src="image/interfaz-de-usuario-de-administrador.png" alt="" />
             </a>
           </div>
           <ul class="sidebar-nav">
@@ -62,7 +61,7 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                  <img src="${pageContext.request.contextPath}/assets/img/icono.png" class="avatar img-fluid rounded" alt="" />
+                  <img src="../image/icono.png" class="avatar img-fluid rounded" alt="" />
                 </a>
               </li>
             </ul>
@@ -78,7 +77,7 @@
             </div>
             <!--tarjeta de sit-->
             <% 
-            UsuarioDTO user=(UsuarioDTO) session.getAttribute("usuarioNuevo"); if (user !=null) { %>
+            Usuario user=(Usuario) session.getAttribute("user"); if (user !=null) { %>
               <div class="d-flex justify-content-center">
                 <div class="tarjeta-compra px-4 py-3 my-3 bg-white rounded border border-success border-4"
                   style="width: 500px;height: 250px;">

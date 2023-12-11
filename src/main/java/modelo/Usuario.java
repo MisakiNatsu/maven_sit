@@ -1,8 +1,6 @@
 
 package modelo;
 
-import java.util.ArrayList;
-
 
 public class Usuario {
 //atributos de usuario
@@ -11,6 +9,7 @@ public class Usuario {
   private String contrasenia;
   private int id_persona;
   private int id_rol;
+
   //constructor
   public Usuario() {
 
@@ -66,10 +65,6 @@ public class Usuario {
     public void setId_rol(int id_rol) {
         this.id_rol = id_rol;
     }
-
-  
-
-    
 
     
 

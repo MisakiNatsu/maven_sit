@@ -7,8 +7,8 @@ import java.util.Date;
 public class Viaje {
     //Atributos de Viaje
     private int id;
-    private String fecha;
-    private String hora;
+    private Date fecha;
+    private Time hora;
     private double tarifa;
     private String reporte_viaje;
     private int id_ruta;
@@ -25,23 +25,21 @@ public class Viaje {
         this.id = id;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public String getHora() {
+    public Time getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(Time hora) {
         this.hora = hora;
     }
-
-    
 
     public double getTarifa() {
         return tarifa;

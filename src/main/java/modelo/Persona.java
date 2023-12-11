@@ -10,15 +10,7 @@ public class Persona {
     private String apellido_paterno;
     private String apellido_materno;
     private Date fechaNacimiento;
-    private int dni;
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
+    private int dani;
     private String correo;
 
     public Persona() {
@@ -64,6 +56,13 @@ public class Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public int getDani() {
+        return dani;
+    }
+
+    public void setDani(int dani) {
+        this.dani = dani;
+    }
 
     public String getCorreo() {
         return correo;

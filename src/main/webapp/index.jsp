@@ -33,7 +33,7 @@
             <a href="#">
               <img
                 class="imagen"
-                src="assets/img/interfaz-de-usuario-de-administrador.png"
+                src="assets/image/interfaz-de-usuario-de-administrador.png"
                 alt=""
               />
             </a>
@@ -44,16 +44,13 @@
               <a href="#" class="sidebar-link"> REPORTES </a>
             </li>
             <li class="sidebar-item">
-              <a href="#" class="sidebar-link"> GESTIONAR RUTAS Y HORARIOS </a>
+              <a href="#" class="sidebar-link"> GESTIÃÂN RUTAS Y HORARIOS </a>
             </li>
             <li class="sidebar-item">
-              <a href="#" class="sidebar-link"> GESTIONAR CONDUCTORES </a>
+              <a href="#" class="sidebar-link"> GESTIÃÂN CONDUCTORES </a>
             </li>
             <li class="sidebar-item">
-              <a href="#" class="sidebar-link"> GESTIONAR UNIDADES </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="assets/vistas/listar2.jsp" class="sidebar-link"> GESTIONAR TABLAS!! </a>
+              <a href="#" class="sidebar-link"> GESTIÃÂN UNIDADES </a>
             </li>
           </ul>
 
@@ -78,7 +75,7 @@
               <li class="nav-item dropdown">
                 <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                   <img
-                    src="assets/img/icono.png"
+                    src="assets/image/icono.png"
                     class="avatar img-fluid rounded"
                     alt=""
                   />
