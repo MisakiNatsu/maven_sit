@@ -61,7 +61,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../image/icono.png" class="avatar img-fluid rounded" alt="" />
+                                <img src="../img/icono.png" class="avatar img-fluid rounded" alt="" />
                             </a>
                         </li>
                     </ul>
